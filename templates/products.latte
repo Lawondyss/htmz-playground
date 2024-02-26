@@ -1,0 +1,100 @@
+<div class="list">
+    {foreach $products as $product}
+    <section>
+        <a href="/products/{$product->id}#content">
+            <img src="{$product->image}" alt="{$product->name}"/>
+            <header>{$product->name}</header>
+        </a>
+        <p>
+            {$product->description}
+            <span class="bottom"></span>
+        </p>
+        <footer>{$product->price|money}</footer>
+    </section>
+    {/foreach}
+</div>
+
+<div class="paginate">
+    {for $p = 1; $p <= $countPages; $p++}
+    <a href="/products/{$p}#content" {if $p === (int)$page}disabled{/if}>{$p}</a>
+    {/for}
+</div>
+
+<style>
+    .list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: .5rem;
+
+        section {
+            background-color: color-mix(in srgb, #B9034B 8%, #F9FDEB);
+            border-radius: .5rem;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+
+            p, footer, a header {
+                padding: .5rem;
+            }
+
+            a {
+                img {
+                    width: 100%;
+                    height: 240px;
+                    overflow: hidden;
+                    object-fit: cover;
+                }
+
+                header {
+                    font-size: 1.5rem;
+                    font-weight: 700;
+                }
+            }
+
+            p {
+                height: 100px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                position: relative;
+
+                span {
+                    display: block;
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 1rem;
+                    background-image: linear-gradient(to bottom, transparent, color-mix(in srgb, #B9034B 8%, #F9FDEB));
+                }
+            }
+
+            footer {
+                font-weight: 700;
+                font-size: 1.25rem;
+                text-align: right;
+            }
+        }
+    }
+
+    .paginate {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-top: 1rem;
+        gap: 2rem;
+
+        a {
+            font-size: 1.125rem;
+            padding: .5rem 1rem;
+            background-color: color-mix(in lab, currentColor 25%, white);
+            border-radius: .25rem;
+
+            &[disabled] {
+                color: #48495D;
+                cursor: default;
+                user-select: none;
+                pointer-events: none;
+            }
+        }
+    }
+</style>

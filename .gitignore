@@ -1,0 +1,4 @@
+temp/*
+!temp/.gitpush
+log/*
+!log/.gitpush

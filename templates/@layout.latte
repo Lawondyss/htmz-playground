@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="cz">
+<head>
+    <meta charset="UTF-8">
+    <title>HTMZ E-shop</title>
+    <link rel="stylesheet" href="/main.css">
+    <base target=htmz>
+</head>
+<body>
+<script>
+    function htmz(frame) {
+        const navigation = frame.contentWindow.performance.getEntriesByType('navigation')[0]
+
+        const target = navigation?.name;
+        if (target && target !== "about:blank") {
+            const url = target.replace(/(#[^?]+)/, '')
+            window.history.replaceState({}, "", url)
+        }
+
+        const status = navigation?.responseStatus;
+        if (status && (status < 200 || status > 299)) {
+            alert(frame.contentWindow.document.title);
+            return;
+        }
+
+        setTimeout(() =>
+            document
+                .querySelector(frame.contentWindow.location.hash || null)
+                ?.replaceChildren(...frame.contentDocument.body.children)
+        );
+    }
+</script>
+<iframe hidden name="htmz" onload="window.htmz(this)"></iframe>
+
+<div class="container">
+    <header>HTMZ E-shop</header>
+    <aside>
+        <ul>
+            <li><a href="/" target="_self">Hlavní stránka</a></li>
+            <li><a href="/products#content">Produkty</a></li>
+            <li><a href="/services#content">Služby</a></li>
+        </ul>
+    </aside>
+    <main id="content">
+        <h1>Náš HTMZ E-shop je tu pro Vás</h1>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut efficitur consectetur erat. Curabitur pretium odio sapien, eget posuere felis elementum nec. Aenean interdum urna magna, id viverra arcu rhoncus ac. Proin elit orci, pharetra sit amet nisi et, sagittis feugiat dolor. Nunc sollicitudin elit sed libero efficitur dignissim. Vestibulum posuere pretium nunc, id vestibulum neque. Quisque semper ante placerat massa fermentum, a tempus mi maximus. Donec et felis nulla. Donec nec lacus quis nibh faucibus faucibus.</p>
+        <p>Vestibulum porttitor libero quis tristique dapibus. Nunc quis gravida leo. Ut elit lorem, ornare eu eros in, porttitor posuere mi. Nullam eget viverra eros, quis fringilla odio. Aenean elementum leo id pellentesque aliquet. Suspendisse quis convallis lectus. Nulla blandit urna a ultrices interdum. Duis dictum vestibulum sem, ac finibus nulla malesuada id.</p>
+    </main>
+    <footer>Made with ❤️ & Nette</footer>
+</div>
+</body>
+</html>

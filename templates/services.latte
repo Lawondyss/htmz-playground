@@ -1,0 +1,52 @@
+<section class="card">
+    <header>Platba</header>
+    <ul>
+        {foreach $payments as $payment}
+        <li>{$payment}</li>
+        {/foreach}
+    </ul>
+</section>
+
+<section class="card">
+    <header>Doprava</header>
+    <ul>
+        {foreach $transports as $transport}
+        <li>{$transport}</li>
+        {/foreach}
+    </ul>
+</section>
+
+<section class="card">
+    <header>Dodatkové služby</header>
+    <ul>
+        {foreach $others as $other}
+        <li>{$other}</li>
+        {/foreach}
+    </ul>
+</section>
+
+<style>
+    .card {
+        background-color: color-mix(in srgb, #B9034B 8%, #F9FDEB);
+        border-radius: .5rem;
+        padding: .75rem;
+        margin-bottom: 1rem;
+        display: flex;
+        flex-direction: column;
+
+        header {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        ul {
+            display: flex;
+            flex-direction: column;
+            gap: .5rem;
+
+            li {
+            }
+        }
+    }
+</style>

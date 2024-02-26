@@ -1,0 +1,8 @@
+services:
+  - App\Model\Products
+  - App\Model\Services
+
+
+latte:
+  extensions:
+    - App\Latte\AppLatteExtension

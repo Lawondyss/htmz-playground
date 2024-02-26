@@ -1,0 +1,20 @@
+{
+  "name": "lawondyss/htmz-playground",
+  "description": "Jen malá zkouška použití htmz, viz https://leanrada.com/htmz/",
+  "authors": [
+    {
+      "name": "Ladislav Vondráček",
+      "email": "lad.von@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "^8.3",
+    "ext-intl": "*",
+    "nette/nette": "^v3.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "app/"
+    }
+  }
+}
